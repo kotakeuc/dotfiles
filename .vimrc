@@ -1,49 +1,38 @@
-set nocompatible               " Be iMproved
+set encoding=utf-8
+set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
 
- if has('vim_starting')
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
+set softtabstop=4
+set expandtab
 
- call neobundle#rc(expand('~/.vim/bundle/'))
+set autoindent smartindent
+set hidden
+set expandtab
+set tabstop=4 softtabstop=4 shiftwidth=4
+set fileformat=unix
+set wildmenu
+set wildmode=list:full
+set noswapfile
+set clipboard=unnamed,autoselect
+set mouse=a
+set ttymouse=xterm2
+set encoding=utf-8
+set fileencodings=utf-8,sjis,ucs-bom,iso-2022-jp,cp932,euc-jp,cp20932
+set imdisable
 
- " Let NeoBundle manage NeoBundle
- NeoBundleFetch 'Shougo/neobundle.vim'
+set laststatus=2
+set number
+set ruler
+set showcmd
+set showmatch
+set list
+set listchars=tab:>-,trail:-
 
- " Recommended to install
- " After install, turn shell ~/.vim/bundle/vimproc, (n,g)make -f your_machines_makefile
- NeoBundle 'Shougo/vimproc'
-
- " My Bundles here:
- "
- " Note: You don't set neobundle setting in .gvimrc!
- " Original repos on github
- NeoBundle 'tpope/vim-fugitive'
- NeoBundle 'Lokaltog/vim-easymotion'
- NeoBundle 'rstacruz/sparkup', {'rtp': 'vim/'}
- " vim-scripts repos
- NeoBundle 'L9'
- NeoBundle 'FuzzyFinder'
- NeoBundle 'rails.vim'
- " Non github repos
- NeoBundle 'git://git.wincent.com/command-t.git'
- " Non git repos
- NeoBundle 'http://svn.macports.org/repository/macports/contrib/mpvim/'
- NeoBundle 'https://bitbucket.org/ns9tks/vim-fuzzyfinder'
-
- " ...
-
- filetype plugin indent on     " Required!
- "
- " Brief help
- " :NeoBundleList          - list configured bundles
- " :NeoBundleInstall(!)    - install(update) bundles
- " :NeoBundleClean(!)      - confirm(or auto-approve) removal of unused bundles
-
- " Installation check.
- NeoBundleCheck
-
-:set encoding=utf-8
-:set fileencodings=iso-2022-jp,euc-jp,sjis,utf-8
-
-:set softtabstop=4
-:set expandtab
+" Highlight Zenkaku Space
+if version >= 703
+    scriptencoding utf-8
+    augroup highlightIdeographicSpace
+        autocmd!
+        autocmd Colorscheme * highlight IdeographicSpace term=underline ctermbg=DarkGreen guibg=DarkGreen
+        autocmd VimEnter,WinEnter * match IdeographicSpace /　/
+    augroup END
+endif
